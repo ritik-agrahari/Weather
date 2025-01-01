@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins";
+    color: white;
+    background-color: #343434;
+}
+
+.container {
+    width: 26%;
+}
+
+.card {
+    border-radius: 50px;
+    background: #343434;
+    box-shadow: 5px 5px 10px #191b19, -5px -5px 10px #595959;
+    padding: 3%;
+    text-align: center;
+}
+
+.card h4 {
+    font-size: 4rem;
+    font-weight: 400;
+    margin: 1rem 0;
+}
+
+img#icon {
+    width: 30%;
+}
+
+h6#weather {
+    text-transform: capitalize;
+}
+
+button.refresh {
+    display: block;
+    width: 100px;
+    margin: 10px auto;
+    background: transparent;
+    border: 0;
+    color: #9c9c9d;
+    font-size: 30px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 10px 4px 10px #252525,5px 5px 18px #4a4a4a;
+}
+
+button.refresh:hover {
+    box-shadow: inset 10px 4pc 10pc #252525, inset 5px 5px 18px #4a4a4a;
+}
+
+.input-container {
+    margin-top: 20px;
+}
+
+.input-container input[type="text"],
+.input-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #343434;
+    color: white; /* Set text color to white */
+}
+
+.input-container button {
+    background-color: #343434;
+    color: white;
+    cursor: pointer;
+}
+
+.input-container button:hover {
+    background-color: #454545;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="api.css">
+</head>
+<body>
+    <div class="container">
+       <div class="card">
+        <h2><i class="fa fa-map-marker"></i><span id="location"></span></h2>
+       <h6 id="weather"></h6>
+       <h4><span id="temp"></span><sup>o</sup>C</h4>
+       <img src="" id="icon">
+       <!-- button to reload page,and a font awesome refresh icon. -->
+       <button onclick="window.location.reload()" class="refresh"><i class="fa fa-refresh"></i></button>
+       <div class="input-container">
+            <input type="text" id="locationInput" placeholder="Enter location">
+            <!--call the getWeather function.-->
+            <button onclick="getWeather(document.getElementById('locationInput').value)">Get Weather</button>
+       </div>
+    </div> 
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        //fetching weather data for a given location
+        function getWeather(location){
+            var link = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=264690a7c49659ae3bcaacb2214f074c";
+            var request = new XMLHttpRequest();
+            request.open('GET',link,true);
+            request.onload = function(){
+             var obj = JSON.parse(this.response);
+             console.log(obj);  
+             //sets inner html content to weather id
+             document.getElementById('weather').innerHTML = obj.weather[0].description;
+             document.getElementById('location').innerHTML = obj.name;
+             document.getElementById('temp').innerHTML = Math.round(obj.main.temp - 273.15);
+             document.getElementById('icon').src = "https://openweathermap.org/img/w/" + obj.weather[0].icon + ".png";
+             
+             if(request.status>=200 && request.status<400){
+                var temp = obj.main.temp;
+             }
+             else{
+                console.log("The city data is not available");
+             }
+            }
+            request.send();
+        }
+    </script>
+</body>
+</html>
